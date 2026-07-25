@@ -22,18 +22,11 @@ export class AuthController {
   ) {
     const result = await this.authService.login(dto);
 
-    // res.cookie("jwt", result.accessToken, {
-    //   httpOnly: true,
-    //   secure: false,
-    //   sameSite: "lax",
-    //   maxAge: 7 * 24 * 60 * 60 * 1000
-    // });
-
     res.cookie("jwt", result.accessToken, {
       httpOnly: true,
-      secure: false,
-      sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+      secure: true,      // Required
+      sameSite: "none",  // Required for cross-site
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     return result;
