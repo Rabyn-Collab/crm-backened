@@ -29,7 +29,7 @@ async function bootstrap() {
 
 
   app.enableCors({
-    origin: "https://crm-frontend-five-sigma.vercel.app",
+    origin: ["https://crm-frontend-five-sigma.vercel.app", "https://crm-frontend-rt1t.onrender.com"],
     credentials: true,
   });
 
