@@ -40,7 +40,7 @@ export class AuthController {
       sameSite: "none",
       secure: true,
     });
-
+    //
     return { message: "Logged out" };
   }
 
