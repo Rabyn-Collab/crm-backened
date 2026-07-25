@@ -28,7 +28,7 @@ async function bootstrap() {
   );
 
   app.enableCors({
-    origin: "http://localhost:3000",
+    origin: "https://crm-frontend-five-sigma.vercel.app",
     credentials: true,
   });
 
