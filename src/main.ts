@@ -18,7 +18,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
-  app.use(cookieParser());
+
 
   app.useGlobalPipes(
     new ValidationPipe({
@@ -36,8 +36,10 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
-  const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api', app, document);
+  app.use(cookieParser());
+
+  // const document = SwaggerModule.createDocument(app, config);
+  // SwaggerModule.setup('api', app, document);
 
 
 
