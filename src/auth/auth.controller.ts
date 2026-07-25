@@ -23,7 +23,6 @@ export class AuthController {
     const result = await this.authService.login(dto);
 
     res.cookie("jwt", result.accessToken, {
-      domain: ".onrender.com",
       httpOnly: true,
       secure: true,
       sameSite: "none",

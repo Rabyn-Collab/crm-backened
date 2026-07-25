@@ -32,6 +32,8 @@ async function bootstrap() {
   app.enableCors({
     origin: ["https://crm-frontend-five-sigma.vercel.app", "https://crm-frontend-rt1t.onrender.com"],
     credentials: true,
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
   const document = SwaggerModule.createDocument(app, config);
