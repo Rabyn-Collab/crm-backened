@@ -31,8 +31,8 @@ export class AuthController {
 
     res.cookie("jwt", result.accessToken, {
       httpOnly: true,
-      secure: true,        // Required in production (HTTPS)
-      sameSite: "none",    // Required for cross-site cookies
+      secure: false,
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
 
