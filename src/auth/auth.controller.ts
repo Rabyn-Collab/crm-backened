@@ -27,7 +27,6 @@ export class AuthController {
       secure: true,        // MUST be true on HTTPS
       sameSite: "none",    // Required for cross-site cookies
       maxAge: 7 * 24 * 60 * 60 * 1000,
-      path: "/",
     });
 
     return result;
