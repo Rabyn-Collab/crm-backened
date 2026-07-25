@@ -26,7 +26,7 @@ async function bootstrap() {
       forbidNonWhitelisted: true,
     }),
   );
-  //
+
 
   app.enableCors({
     origin: "https://crm-frontend-five-sigma.vercel.app",
