@@ -37,8 +37,8 @@ export class AuthController {
   logout(@Res({ passthrough: true }) res: Response) {
     res.clearCookie("jwt", {
       httpOnly: true,
-      sameSite: "lax",
-      secure: false,
+      sameSite: "none",
+      secure: true,
     });
 
     return { message: "Logged out" };
