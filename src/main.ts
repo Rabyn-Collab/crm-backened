@@ -9,9 +9,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 
 async function bootstrap() {
-
   const app = await NestFactory.create(AppModule);
-  app.use(cookieParser());
   app.getHttpAdapter().getInstance().set('trust proxy', 1); // 👈 fixed
 
   const config = new DocumentBuilder()
@@ -20,7 +18,7 @@ async function bootstrap() {
     .setVersion('1.0')
     .build();
 
-
+  app.use(cookieParser());
 
   app.useGlobalPipes(
     new ValidationPipe({
