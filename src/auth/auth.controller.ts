@@ -24,9 +24,10 @@ export class AuthController {
 
     res.cookie("jwt", result.accessToken, {
       httpOnly: true,
-      secure: true,      // Required
-      sameSite: "none",  // Required for cross-site
+      secure: true,        // MUST be true on HTTPS
+      sameSite: "none",    // Required for cross-site cookies
       maxAge: 7 * 24 * 60 * 60 * 1000,
+      path: "/",
     });
 
     return result;
@@ -40,7 +41,7 @@ export class AuthController {
       sameSite: "none",
       secure: true,
     });
-    //
+
     return { message: "Logged out" };
   }
 
