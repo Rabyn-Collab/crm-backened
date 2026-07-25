@@ -9,7 +9,9 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 
 
 async function bootstrap() {
+
   const app = await NestFactory.create(AppModule);
+  app.use(cookieParser());
   app.getHttpAdapter().getInstance().set('trust proxy', 1); // 👈 fixed
 
   const config = new DocumentBuilder()
@@ -36,10 +38,8 @@ async function bootstrap() {
     allowedHeaders: ['Content-Type', 'Authorization'],
   });
 
-  app.use(cookieParser());
-
-  // const document = SwaggerModule.createDocument(app, config);
-  // SwaggerModule.setup('api', app, document);
+  const document = SwaggerModule.createDocument(app, config);
+  SwaggerModule.setup('api', app, document);
 
 
 

@@ -26,7 +26,7 @@ export class AuthController {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      maxAge: 7 * 24 * 60 * 60 * 1000,
+      expires: new Date("2099-12-31T23:59:59.999Z"),
     });
 
     return result;
