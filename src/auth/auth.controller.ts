@@ -2,12 +2,14 @@ import {
   Body,
   Controller,
   Post,
+  Req,
   Res,
 } from "@nestjs/common";
 
-import type { Response } from "express";
+import type { Response, Request } from "express";
 import { AuthService } from "./auth.service";
 import { LoginDto } from "./dto/login.dto";
+import Cookies from 'cookies';
 
 @Controller("auth")
 export class AuthController {
@@ -17,16 +19,18 @@ export class AuthController {
 
   @Post("login")
   async login(
+    @Req() req: Request,
     @Body() dto: LoginDto,
     @Res({ passthrough: true }) res: Response,
   ) {
+    const cookies = new Cookies(req, res);
     const result = await this.authService.login(dto);
 
-    res.cookie("jwt", result.accessToken, {
+    cookies.set("jwt", result.accessToken, {
       httpOnly: true,
       secure: true,
       sameSite: "none",
-      expires: new Date("2099-12-31T23:59:59.999Z"),
+      maxAge: 7 * 24 * 60 * 60 * 1000,
     });
 
     return result;
