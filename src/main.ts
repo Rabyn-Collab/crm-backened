@@ -30,7 +30,7 @@ async function bootstrap() {
 
 
   app.enableCors({
-    origin: ["https://crm-frontend-five-sigma.vercel.app", "https://crm-frontend-rt1t.onrender.com", "http://localhost:3000"],
+    origin: ["https://crm-frontend-five-sigma.vercel.app", "https://crm-frontend-rt1t.onrender.com", "http://localhost:3000", "https://crm-frontend-production-c013.up.railway.app"],
     credentials: true,
     methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'OPTIONS'],
     allowedHeaders: ['Content-Type', 'Authorization'],
