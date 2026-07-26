@@ -22,12 +22,12 @@ export class AuthController {
   ) {
     const result = await this.authService.login(dto);
 
-    res.cookie("jwt", result.accessToken, {
-      httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      expires: new Date("2099-12-31T23:59:59.999Z"),
-    });
+    // res.cookie("jwt", result.accessToken, {
+    //   httpOnly: true,
+    //   secure: true,
+    //   sameSite: "none",
+    //   expires: new Date("2099-12-31T23:59:59.999Z"),
+    // });
 
     return result;
   }
@@ -37,8 +37,8 @@ export class AuthController {
   logout(@Res({ passthrough: true }) res: Response) {
     res.clearCookie("jwt", {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
+      secure: false,
+      sameSite: "lax",
       expires: new Date("2099-12-31T23:59:59.999Z"),
     });
 
