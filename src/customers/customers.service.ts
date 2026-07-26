@@ -15,6 +15,7 @@ export class CustomersService {
   ) { }
 
   async findAll(user: JwtPayload) {
+    console.log(user);
     return this.customersRepository.findAll(user.tenantId!);
   }
 
